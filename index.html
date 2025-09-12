@@ -320,16 +320,18 @@
 		
 		
 		<script>
-			function sendToWhatsApp(){
-				const form = document.getElementById('discoveryForm');
-				const formData = new FormData(form);
-				let message = \"Preschool Platform Discovery Form\\n\\n\";
-				formData.forEach((value, key) => {
-					message += key + \": \" + value + \"\\n\";
-				});
-				const phone = '+966558396849'; // fixed number placeholder
-				const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-				window.open(url, '_blank');
+		function sendToWhatsApp() {
+			  const form = document.getElementById('discoveryForm');
+			  const formData = new FormData(form);
+			  let message = "Preschool Platform Discovery Form\n\n"; // fixed quotes
+			
+			  formData.forEach((value, key) => {
+			    message += key + ": " + value + "\n";
+			  });
+			
+			  const phone = '+966558396849'; // replace with your WhatsApp number
+			  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+			  window.open(url, '_blank');
 			}
 		</script>
 		
@@ -352,4 +354,5 @@
 		</footer>
 	</body>
 </html>
+
 
