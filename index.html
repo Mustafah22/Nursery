@@ -148,6 +148,22 @@
 			width: 55px;
 			opacity: 0.7;
 			}
+			.save-txt-btn {
+			  background-color: #4f46e5; /* nice purple */
+			  color: #fff;
+			  border: none;
+			  padding: 1rem 1.5rem;
+			  font-size: 1rem;
+			  font-weight: 600;
+			  border-radius: 50px;
+			  cursor: pointer;
+			  margin-right: 1rem;
+			  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			  transition: background 0.3s;
+			}
+			.save-txt-btn:hover {
+			  background-color: #3730a3; /* darker purple */
+			}
 		</style>
 	</head>
 	<body>
@@ -314,7 +330,8 @@
 				
 			</form>
 		</div>
-		
+
+		<button class="save-txt-btn" onclick="saveAsTXT()">Save as TXT</button>
 		<button class="whatsapp-btn" onclick="sendToWhatsApp()">Send to WhatsApp</button>
 		
 		
@@ -333,6 +350,26 @@
 			  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 			  window.open(url, '_blank');
 			}
+		</script>
+		<script>
+		function saveAsTXT() {
+		  const form = document.getElementById('discoveryForm');
+		  const formData = new FormData(form);
+		  let content = "Preschool Platform Discovery Form\n\n";
+		
+		  formData.forEach((value, key) => {
+		    content += key + ": " + value + "\n";
+		  });
+		
+		  // Create a temporary link to download the TXT
+		  const blob = new Blob([content], { type: 'text/plain' });
+		  const url = URL.createObjectURL(blob);
+		  const a = document.createElement('a');
+		  a.href = url;
+		  a.download = 'Preschool_Discovery_Form.txt';
+		  a.click();
+		  URL.revokeObjectURL(url);
+		}
 		</script>
 		
 		<!-- Sticky Footer -->
@@ -354,5 +391,6 @@
 		</footer>
 	</body>
 </html>
+
 
 
